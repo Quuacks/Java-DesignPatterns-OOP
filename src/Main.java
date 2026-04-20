@@ -6,6 +6,8 @@ import FactoryMethod.ProductFactory;
 import Observer.Customer;
 import Observer.ProductObserver;
 import Singleton.InventoryManager;
+import Strategy.CreditCardPayment;
+import Strategy.PaymentInformation;
 
 public class Main{
     public static void main(String[] args) {
@@ -20,5 +22,10 @@ public class Main{
         Order myOrder = new BasicOrder(book);
         myOrder = new WrapedDecorated(myOrder);
         System.out.println("Uzsakymas " + myOrder.getDescription() + " | Kaina: " + myOrder.getCost());
+
+        PaymentInformation payment = new PaymentInformation();
+        payment.setPaymentStrategy(new CreditCardPayment());
+        payment.addProductToBag(myOrder);
+        payment.checkout();
     }
 }
