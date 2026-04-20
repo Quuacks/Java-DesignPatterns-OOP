@@ -1,6 +1,6 @@
 package Decorator;
 
-class WrapedDecorated extends OrderDecorator{
+public class WrapedDecorated extends OrderDecorator{
     public WrapedDecorated(Order order){
         super(order);
     }

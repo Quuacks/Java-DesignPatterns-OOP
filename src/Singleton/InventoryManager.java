@@ -1,11 +1,12 @@
 package Singleton;
 
 import FactoryMethod.Product;
+import Observer.ProductObserver;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class InventoryManager {
+public class InventoryManager {
     private static InventoryManager instance;
 
     public List<Product> stock = new ArrayList<>();
@@ -19,8 +20,9 @@ class InventoryManager {
     }
 
 
-    public void addToStock(Product newProduct) {
+    public void addToStock(Product newProduct, ProductObserver observer) {
         stock.add(newProduct);
+        observer.notifyObservers(newProduct);
     }
     public void getStock() {
         for(Product product : stock){

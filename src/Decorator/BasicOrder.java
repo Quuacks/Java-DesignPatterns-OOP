@@ -1,10 +1,17 @@
 package Decorator;
 
+import FactoryMethod.Product;
+
 public class BasicOrder implements Order{
+    Product product;
+    public BasicOrder(Product product){
+        this.product = product;
+    }
+
     public double getCost(){
-        return 15.0;
+        return product.getPrice() + 15.0;
     }
     public String getDescription(){
-        return "Paprastas Uzsakymas";
+        return product.getName() + " Paprastas Uzsakymas";
     }
 }
